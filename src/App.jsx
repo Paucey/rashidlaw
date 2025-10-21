@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Box, Flex, Heading, Button, Image, Spacer } from "@chakra-ui/react";
+import logo from './assets/images/asaflogo.png';
+import BlogPosts from './BlogPosts.jsx';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}, ah-ah-ah! BEEP BOOP BEEP BOOP
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Box bg="brand.800" minH="100vh">
+      {/* Header */}
+      <Flex
+        as="header"
+        align="center"
+        justify="space-between"
+        p={4}
+        bg="brand.700"
+        boxShadow="sm"
+      >
+        <Flex align="center" gap="3">
+          <Image src={logo} alt="Law Firm Logo" boxSize="50px" />
+          <Heading as="h1" size="md" color="brand.900">
+            Rashid Law
+          </Heading>
+        </Flex>
 
-export default App
+        <Spacer />
+
+        <Flex gap="4">
+          <Button variant="ghost" colorScheme="brand">About</Button>
+          <Button variant="ghost" colorScheme="brand">Media</Button>
+          <Button variant="ghost" colorScheme="brand">Contact</Button>
+          <Button variant="ghost" colorScheme="brand">Areas</Button>
+          <Button variant="ghost" colorScheme="brand">Blog</Button>
+        </Flex>
+      </Flex>
+
+      {/* Top content */}
+      <Box p={8} bg="brand.800">
+        <Heading as="h2" size="lg" mb={4} color="white">
+          Rashid Law: The Lawest Law
+        </Heading>
+        <Box maxW="600px" color="whiteAlpha.900">
+          So much law, so little time.
+        </Box>
+
+        {/* Blog posts */}
+        <BlogPosts />
+      </Box>
+    </Box>
+  );
+}
